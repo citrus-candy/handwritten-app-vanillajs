@@ -14,4 +14,16 @@ window.onload = function() {
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "black";
   canvas.setBackgroundColor("lightgray", canvas.renderAll.bind(canvas));
+
+  // 戻るボタンの処理
+  const backButton = document.getElementById("back-button");
+  let canvasHistory = [];
+  backButton.addEventListener("click", () => {
+    if (canvas !== undefined && canvas._objects.length > 0) {
+      const copyArray = [...canvasHistory];
+      copyArray.push(canvas._objects.pop());
+      canvasHistory = copyArray;
+      canvas.renderAll();
+    }
+  });
 };
