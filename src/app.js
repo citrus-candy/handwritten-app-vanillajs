@@ -46,4 +46,36 @@ window.onload = function() {
     deactiveButton.style.display = "flex";
     bottomButtonContainer.style.marginTop = "104px";
   });
+
+  // 色ボタンの処理
+  const colorButtons = document.querySelectorAll(".color");
+  colorButtons.forEach(colorButton => {
+    colorButton.addEventListener("click", () => {
+      switch (colorButton.getAttribute("id")) {
+        case "red":
+          canvas.freeDrawingBrush.color = "#ff3b66";
+          break;
+        case "purple":
+          canvas.freeDrawingBrush.color = "#e83bff";
+          break;
+        case "yellow":
+          canvas.freeDrawingBrush.color = "#ffcc00";
+          break;
+        case "green":
+          canvas.freeDrawingBrush.color = "#1bcc00";
+          break;
+        case "lightblue":
+          canvas.freeDrawingBrush.color = "#37b0ff";
+          break;
+        case "blue":
+          canvas.freeDrawingBrush.color = "#3756ff";
+          break;
+        case "black":
+          canvas.freeDrawingBrush.color = "#505050";
+          break;
+        default:
+          break;
+      }
+    });
+  });
 };
