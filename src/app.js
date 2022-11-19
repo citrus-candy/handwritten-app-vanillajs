@@ -12,7 +12,7 @@ window.onload = function() {
     freeDrawingBrush: new fabric.PencilBrush(canvas)
   });
   canvas.freeDrawingBrush.width = 5;
-  canvas.freeDrawingBrush.color = "black";
+  canvas.freeDrawingBrush.color = "#505050";
   canvas.setBackgroundColor("lightgray", canvas.renderAll.bind(canvas));
 
   // 戻るボタンの処理
@@ -77,5 +77,12 @@ window.onload = function() {
           break;
       }
     });
+  });
+
+  // 保存ボタンの処理
+  const saveButton = document.getElementById("save-button");
+  saveButton.addEventListener("click", () => {
+    const json = JSON.stringify(canvas);
+    console.log(json);
   });
 };
