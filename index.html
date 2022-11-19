@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handwritten App</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="canvas-container">
+        <span class="date">2022/4/25</span>
+        <div class="draw-area">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+      <div class="canvas-button-container">
+        <div class="button" id="back-button">戻る</div>
+        <div class="button">拡大・縮小</div>
+        <div class="button" id="deactive-button">テキスト</div>
+        <div class="colors-button" id="active-button-container">
+          <span id="active-button">テキスト</span>
+          <div class="color-container">
+            <div class="color" id="red"></div>
+            <div class="color" id="purple"></div>
+            <div class="color" id="yellow"></div>
+            <div class="color" id="green"></div>
+            <div class="color" id="lightblue"></div>
+            <div class="color" id="blue"></div>
+            <div class="color" id="black"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-button-container" id="bottom-button-container">
+        <div class="close-button">
+          閉じる
+        </div>
+        <div class="save-button" id="save-button">
+          保存する
+        </div>
+      </div>
+    </div>
+  <script src="main.bundle.js"></script></body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
+</html>
