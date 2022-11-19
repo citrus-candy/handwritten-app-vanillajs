@@ -36,6 +36,16 @@ window.onload = function() {
     }
   });
 
+  // 拡大・縮小ボタンの処理
+  const zoomButton = document.getElementById("zoom-button");
+  zoomButton.addEventListener("click", () => {
+    let zoom = canvas.getZoom();
+    canvas.zoomToPoint(
+      new fabric.Point(canvas.width / 2, canvas.height / 2),
+      zoom == 1 ? 1.5 : 1
+    );
+  });
+
   // テキストボタンの処理
   const activeButton = document.getElementById("active-button");
   const activeButtonContainer = document.getElementById(
