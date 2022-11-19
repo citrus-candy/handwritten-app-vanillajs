@@ -1,6 +1,8 @@
 /* eslint-disable */
 import "./style.css";
 
+import "./assets/img/028_paper.jpg";
+
 window.onload = function() {
   // 画面サイズからvhを100%にする
   let vh = window.innerHeight * 0.01;
@@ -8,12 +10,19 @@ window.onload = function() {
 
   // Fabricjsの初期設定
   const canvas = new fabric.Canvas("canvas", {
+    width: 391,
+    height: 553,
     isDrawingMode: true,
     freeDrawingBrush: new fabric.PencilBrush(canvas)
   });
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "#505050";
-  canvas.setBackgroundColor("lightgray", canvas.renderAll.bind(canvas));
+  fabric.Image.fromURL("./028_paper.jpg", img => {
+    img.scaleToWidth(canvas.width);
+    img.scaleToHeight(canvas.height);
+    canvas.setBackgroundImage(img);
+    canvas.requestRenderAll();
+  });
 
   // 戻るボタンの処理
   const backButton = document.getElementById("back-button");
