@@ -1,1 +1,87 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: rgb(80 80 80 / 90%);
+  color: #505050;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 38px;
+}
+
+.canvas-container {
+  padding: 32px 29px;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  font-size: 18px;
+}
+
+.draw-area {
+  background-color: lightgray;
+  width: 415px;
+  height: 553.33px;
+  margin-top: 45px;
+  margin-bottom: 14px;
+  align-self: center;
+}
+
+.canvas-button-container {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  width: calc(100% / 3);
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: solid 1px #505050;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.bottom-button-container {
+  margin-top: 104px;
+  display: flex;
+  justify-content: center;
+}
+
+.close-button,
+.save-button {
+  width: 193px;
+  height: 46px;
+  border-radius: 3px;
+  margin: 0 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button {
+  background-color: white;
+}
+
+.save-button {
+  background-color: #35bbc6;
+  color: white;
+}
