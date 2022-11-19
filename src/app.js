@@ -26,4 +26,24 @@ window.onload = function() {
       canvas.renderAll();
     }
   });
+
+  // テキストボタンの処理
+  const activeButton = document.getElementById("active-button");
+  const activeButtonContainer = document.getElementById(
+    "active-button-container"
+  );
+  const deactiveButton = document.getElementById("deactive-button");
+  const bottomButtonContainer = document.getElementById(
+    "bottom-button-container"
+  );
+  deactiveButton.addEventListener("click", () => {
+    activeButtonContainer.style.display = "flex";
+    deactiveButton.style.display = "none";
+    bottomButtonContainer.style.marginTop = "33px";
+  });
+  activeButton.addEventListener("click", () => {
+    activeButtonContainer.style.display = "none";
+    deactiveButton.style.display = "flex";
+    bottomButtonContainer.style.marginTop = "104px";
+  });
 };
