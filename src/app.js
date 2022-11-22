@@ -25,7 +25,7 @@ window.onload = function() {
   });
 
   // 戻るボタンの処理
-  const backButton = document.getElementById("back-button");
+  const backButton = document.getElementById("back");
   let canvasHistory = [];
   backButton.addEventListener("click", () => {
     if (canvas !== undefined && canvas._objects.length > 0) {
@@ -37,7 +37,7 @@ window.onload = function() {
   });
 
   // 拡大・縮小ボタンの処理
-  const zoomButton = document.getElementById("zoom-button");
+  const zoomButton = document.getElementById("zoom");
   zoomButton.addEventListener("click", () => {
     let zoom = canvas.getZoom();
     canvas.zoomToPoint(
@@ -47,21 +47,17 @@ window.onload = function() {
   });
 
   // テキストボタンの処理
-  const activeButton = document.getElementById("active-button");
-  const activeButtonContainer = document.getElementById(
-    "active-button-container"
-  );
-  const deactiveButton = document.getElementById("deactive-button");
-  const bottomButtonContainer = document.getElementById(
-    "bottom-button-container"
-  );
+  const activeButton = document.getElementById("active");
+  const activeWrapper = document.getElementById("active-wrapper");
+  const deactiveButton = document.getElementById("deactive");
+  const bottomButtonContainer = document.getElementById("bottom-bc");
   deactiveButton.addEventListener("click", () => {
-    activeButtonContainer.style.display = "flex";
+    activeWrapper.style.display = "flex";
     deactiveButton.style.display = "none";
     bottomButtonContainer.style.marginTop = "33px";
   });
   activeButton.addEventListener("click", () => {
-    activeButtonContainer.style.display = "none";
+    activeWrapper.style.display = "none";
     deactiveButton.style.display = "flex";
     bottomButtonContainer.style.marginTop = "104px";
   });
@@ -99,7 +95,7 @@ window.onload = function() {
   });
 
   // 保存ボタンの処理
-  const saveButton = document.getElementById("save-button");
+  const saveButton = document.getElementById("save");
   saveButton.addEventListener("click", () => {
     const json = JSON.stringify(canvas);
     console.log(json);

@@ -10,6 +10,9 @@ body {
   color: #505050;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
+  max-width: 980px;
+  margin: auto;
+  user-select: none;
 }
 
 .container {
@@ -47,34 +50,35 @@ body {
 }
 
 .button {
-  width: calc(100% / 3);
-  height: 58px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+#back,
+#zoom,
+#deactive,
+.color-button-wrapper {
+  width: calc(100% / 3);
+  height: 58px;
   background-color: white;
   border: solid 1px #505050;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.colors-button {
-  width: calc(100% / 3);
+.color-button-wrapper {
   height: 129px;
   display: none;
   flex-direction: column;
   align-items: center;
   background-color: #eaf8f9;
-  border: solid 1px #505050;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
-.colors-button span {
+
+#active {
   width: 100%;
   height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .color-container {
@@ -89,26 +93,27 @@ body {
   height: 21px;
   margin: 5px 9px;
   border-radius: 50%;
+  cursor: pointer;
 }
-.color#red {
+#red {
   background-color: #ff3b66;
 }
-.color#purple {
+#purple {
   background-color: #e83bff;
 }
-.color#yellow {
+#yellow {
   background-color: #ffcc00;
 }
-.color#green {
+#green {
   background-color: #1bcc00;
 }
-.color#lightblue {
+#lightblue {
   background-color: #37b0ff;
 }
-.color#blue {
+#blue {
   background-color: #3756ff;
 }
-.color#black {
+#black {
   background-color: #505050;
 }
 
@@ -118,22 +123,19 @@ body {
   justify-content: center;
 }
 
-.close-button,
-.save-button {
+#close,
+#save {
   width: 193px;
   height: 46px;
   border-radius: 3px;
   margin: 0 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.close-button {
+#close {
   background-color: white;
 }
 
-.save-button {
+#save {
   background-color: #35bbc6;
   color: white;
 }
