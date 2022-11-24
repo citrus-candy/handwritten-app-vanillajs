@@ -4,6 +4,8 @@ import "./style.css";
 import "./assets/img/028_paper.jpg";
 
 window.onload = function() {
+  let canvasJson = null;
+
   // 画面サイズからvhを100%にする
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -17,12 +19,6 @@ window.onload = function() {
   });
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = "#505050";
-  fabric.Image.fromURL("./028_paper.jpg", img => {
-    img.scaleToWidth(canvas.width);
-    img.scaleToHeight(canvas.height);
-    canvas.setBackgroundImage(img);
-    canvas.requestRenderAll();
-  });
 
   // 戻るボタンの処理
   const backButton = document.getElementById("back");
@@ -97,7 +93,35 @@ window.onload = function() {
   // 保存ボタンの処理
   const saveButton = document.getElementById("save");
   saveButton.addEventListener("click", () => {
-    const json = JSON.stringify(canvas);
-    console.log(json);
+    canvasJson = JSON.stringify(canvas);
+    console.log(canvasJson);
+    mainContainer.style.display = "none";
+    imageContainer.style.display = "flex";
+  });
+
+  // 閉じるボタンの処理
+  const closeButton = document.getElementById("close");
+  closeButton.addEventListener("click", () => {
+    mainContainer.style.display = "none";
+    imageContainer.style.display = "flex";
+  });
+
+  // 画像ボタンの処理
+  const mainContainer = document.getElementById("main");
+  const imageContainer = document.getElementById("image");
+  const imageButton = document.getElementById("image-button");
+  imageButton.addEventListener("click", () => {
+    canvas.clear();
+    if (canvasJson) canvas.loadFromJSON(canvasJson);
+    else {
+      fabric.Image.fromURL("./028_paper.jpg", img => {
+        img.scaleToWidth(canvas.width);
+        img.scaleToHeight(canvas.height);
+        canvas.setBackgroundImage(img);
+        canvas.requestRenderAll();
+      });
+    }
+    mainContainer.style.display = "flex";
+    imageContainer.style.display = "none";
   });
 };
