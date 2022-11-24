@@ -18,7 +18,10 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="image-container" id="image">
+      <img src="./028_paper.jpg" alt="image" id="image-button" />
+    </div>
+    <div class="container" id="main">
       <div class="canvas-container">
         <span class="date">2022/4/25</span>
         <div class="draw-area">
@@ -26,11 +29,11 @@
         </div>
       </div>
       <div class="canvas-button-container">
-        <div class="button" id="back-button">戻る</div>
-        <div class="button">拡大・縮小</div>
-        <div class="button" id="deactive-button">テキスト</div>
-        <div class="colors-button" id="active-button-container">
-          <span id="active-button">テキスト</span>
+        <div class="button" id="back">戻る</div>
+        <div class="button" id="zoom">拡大・縮小</div>
+        <div class="button" id="deactive">テキスト</div>
+        <div class="color-button-wrapper" id="active-wrapper">
+          <span class="button" id="active">テキスト</span>
           <div class="color-container">
             <div class="color" id="red"></div>
             <div class="color" id="purple"></div>
@@ -42,11 +45,11 @@
           </div>
         </div>
       </div>
-      <div class="bottom-button-container" id="bottom-button-container">
-        <div class="close-button">
+      <div class="bottom-button-container" id="bottom-bc">
+        <div class="button" id="close">
           閉じる
         </div>
-        <div class="save-button" id="save-button">
+        <div class="button" id="save">
           保存する
         </div>
       </div>
