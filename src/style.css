@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   color: #505050;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
