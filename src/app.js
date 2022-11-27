@@ -34,12 +34,20 @@ window.onload = function() {
 
   // 拡大・縮小ボタンの処理
   const zoomButton = document.getElementById("zoom");
+  let zoomFlag = false;
   zoomButton.addEventListener("click", () => {
     let zoom = canvas.getZoom();
     canvas.zoomToPoint(
       new fabric.Point(canvas.width / 2, canvas.height / 2),
       zoom == 1 ? 1.5 : 1
     );
+    if (zoomFlag) {
+      zoomButton.style.backgroundColor = "white";
+      zoomFlag = false;
+    } else {
+      zoomButton.style.backgroundColor = "#eaf8f9";
+      zoomFlag = true;
+    }
   });
 
   // テキストボタンの処理
