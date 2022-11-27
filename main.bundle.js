@@ -1896,7 +1896,7 @@ module.exports = {
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: \"Noto Sans JP\", sans-serif;\n  color: #505050;\n  height: 100vh;\n  height: calc(var(--vh, 1vh) * 100);\n  max-width: 980px;\n  margin: auto;\n  user-select: none;\n}\n\n.image-container {\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.image-container img {\n  width: 200px;\n  cursor: pointer;\n}\n\n.container {\n  height: 100%;\n  background-color: rgb(80 80 80 / 90%);\n  display: none;\n  flex-direction: column;\n  justify-content: center;\n  padding: 0 38px;\n}\n\n.canvas-container {\n  padding: 32px 29px;\n  background-color: white;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  display: flex;\n  flex-direction: column;\n}\n\n.date {\n  font-size: 18px;\n}\n\n.draw-area {\n  height: 553px;\n  margin-top: 45px;\n  margin-bottom: 14px;\n  align-self: center;\n}\n\n.canvas-button-container {\n  font-size: 15px;\n  display: flex;\n  justify-content: space-around;\n}\n\n.button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n\n#back,\n#zoom,\n#deactive,\n.color-button-wrapper {\n  width: calc(100% / 3);\n  height: 58px;\n  background-color: white;\n  border: solid 1px #505050;\n  border-bottom-left-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n\n.color-button-wrapper {\n  height: 129px;\n  display: none;\n  flex-direction: column;\n  align-items: center;\n  background-color: #eaf8f9;\n}\n\n#active {\n  width: 100%;\n  height: 58px;\n}\n\n.color-container {\n  width: 156px; /* (body + margin-left + margin-right) * 4 */\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.color {\n  width: 21px;\n  height: 21px;\n  margin: 5px 9px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n#red {\n  background-color: #ff3b66;\n}\n#purple {\n  background-color: #e83bff;\n}\n#yellow {\n  background-color: #ffcc00;\n}\n#green {\n  background-color: #1bcc00;\n}\n#lightblue {\n  background-color: #37b0ff;\n}\n#blue {\n  background-color: #3756ff;\n}\n#black {\n  background-color: #505050;\n}\n\n.bottom-button-container {\n  margin-top: 104px;\n  display: flex;\n  justify-content: center;\n}\n\n#close,\n#save {\n  width: 193px;\n  height: 46px;\n  border-radius: 3px;\n  margin: 0 13px;\n}\n\n#close {\n  background-color: white;\n}\n\n#save {\n  background-color: #35bbc6;\n  color: white;\n}\n", ""]);
+exports.push([module.i, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: 'Noto Sans JP', sans-serif;\n  color: #505050;\n  height: 100vh;\n  height: calc(var(--vh, 1vh) * 100);\n  max-width: 980px;\n  margin: auto;\n  user-select: none;\n}\n\n.image-container {\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.image-container img {\n  width: 200px;\n  cursor: pointer;\n}\n\n.container {\n  height: 100%;\n  background-color: rgb(80 80 80 / 90%);\n  display: none;\n  flex-direction: column;\n  justify-content: center;\n  padding: 0 38px;\n}\n\n.canvas-container {\n  padding: 32px 29px;\n  background-color: white;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n  display: flex;\n  flex-direction: column;\n}\n\n.date {\n  font-size: 18px;\n}\n\n.draw-area {\n  height: 553px;\n  margin-top: 45px;\n  margin-bottom: 14px;\n  align-self: center;\n}\n\n.canvas-button-container {\n  font-size: 15px;\n  display: flex;\n  justify-content: space-around;\n}\n\n.button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n\n#back,\n#zoom,\n#deactive,\n.color-button-wrapper {\n  width: calc(100% / 3);\n  height: 58px;\n  background-color: white;\n  border: solid 1px #505050;\n  border-bottom-left-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n\n.color-button-wrapper {\n  height: 129px;\n  display: none;\n  flex-direction: column;\n  align-items: center;\n  background-color: #eaf8f9;\n}\n\n#active {\n  width: 100%;\n  height: 58px;\n}\n\n.color-container {\n  width: 156px; /* (body + margin-left + margin-right) * 4 */\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.color {\n  width: 21px;\n  height: 21px;\n  margin: 5px 9px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n#red {\n  background-color: #ff3b66;\n}\n#purple {\n  background-color: #e83bff;\n}\n#yellow {\n  background-color: #ffcc00;\n}\n#green {\n  background-color: #1bcc00;\n}\n#lightblue {\n  background-color: #37b0ff;\n}\n#blue {\n  background-color: #3756ff;\n}\n#black {\n  background-color: #505050;\n}\n\n.bottom-button-container {\n  margin-top: 104px;\n  display: flex;\n  justify-content: center;\n}\n\n#close,\n#save {\n  width: 193px;\n  height: 46px;\n  border-radius: 3px;\n  margin: 0 13px;\n}\n\n#close {\n  background-color: white;\n}\n\n#save {\n  background-color: #35bbc6;\n  color: white;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -10859,20 +10859,20 @@ window.onload = function () {
   var canvasJson = null; // 画面サイズからvhを100%にする
 
   var vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", "".concat(vh, "px")); // Fabricjsの初期設定
+  document.documentElement.style.setProperty('--vh', "".concat(vh, "px")); // Fabricjsの初期設定
 
-  var canvas = new fabric.Canvas("canvas", {
+  var canvas = new fabric.Canvas('canvas', {
     width: 391,
     height: 553,
     isDrawingMode: true,
     freeDrawingBrush: new fabric.PencilBrush(canvas)
   });
   canvas.freeDrawingBrush.width = 5;
-  canvas.freeDrawingBrush.color = "#505050"; // 戻るボタンの処理
+  canvas.freeDrawingBrush.color = '#505050'; // 戻るボタンの処理
 
-  var backButton = document.getElementById("back");
+  var backButton = document.getElementById('back');
   var canvasHistory = [];
-  backButton.addEventListener("click", function () {
+  backButton.addEventListener('click', function () {
     if (canvas !== undefined && canvas._objects.length > 0) {
       var copyArray = _toConsumableArray(canvasHistory);
 
@@ -10882,57 +10882,73 @@ window.onload = function () {
     }
   }); // 拡大・縮小ボタンの処理
 
-  var zoomButton = document.getElementById("zoom");
-  zoomButton.addEventListener("click", function () {
+  var zoomButton = document.getElementById('zoom');
+  var zoomFlag = false;
+  zoomButton.addEventListener('click', function () {
     var zoom = canvas.getZoom();
     canvas.zoomToPoint(new fabric.Point(canvas.width / 2, canvas.height / 2), zoom == 1 ? 1.5 : 1);
+
+    if (zoomFlag) {
+      zoomButton.style.backgroundColor = 'white';
+      zoomFlag = false;
+    } else {
+      zoomButton.style.backgroundColor = '#eaf8f9';
+      zoomFlag = true;
+    }
+  });
+  canvas.on('touch:gesture', function (event) {
+    // isGestureEvent = true;
+    var lPinchScale = event.self.scale;
+    var scaleDiff = (lPinchScale - 1) / 10 + 1; // Slow down zoom speed
+
+    canvas.setZoom(canvas.viewport.zoom * scaleDiff);
   }); // テキストボタンの処理
 
-  var activeButton = document.getElementById("active");
-  var activeWrapper = document.getElementById("active-wrapper");
-  var deactiveButton = document.getElementById("deactive");
-  var bottomButtonContainer = document.getElementById("bottom-bc");
-  deactiveButton.addEventListener("click", function () {
-    activeWrapper.style.display = "flex";
-    deactiveButton.style.display = "none";
-    bottomButtonContainer.style.marginTop = "33px";
+  var activeButton = document.getElementById('active');
+  var activeWrapper = document.getElementById('active-wrapper');
+  var deactiveButton = document.getElementById('deactive');
+  var bottomButtonContainer = document.getElementById('bottom-bc');
+  deactiveButton.addEventListener('click', function () {
+    activeWrapper.style.display = 'flex';
+    deactiveButton.style.display = 'none';
+    bottomButtonContainer.style.marginTop = '33px';
   });
-  activeButton.addEventListener("click", function () {
-    activeWrapper.style.display = "none";
-    deactiveButton.style.display = "flex";
-    bottomButtonContainer.style.marginTop = "104px";
+  activeButton.addEventListener('click', function () {
+    activeWrapper.style.display = 'none';
+    deactiveButton.style.display = 'flex';
+    bottomButtonContainer.style.marginTop = '104px';
   }); // 色ボタンの処理
 
-  var colorButtons = document.querySelectorAll(".color");
+  var colorButtons = document.querySelectorAll('.color');
   colorButtons.forEach(function (colorButton) {
-    colorButton.addEventListener("click", function () {
-      switch (colorButton.getAttribute("id")) {
-        case "red":
-          canvas.freeDrawingBrush.color = "#ff3b66";
+    colorButton.addEventListener('click', function () {
+      switch (colorButton.getAttribute('id')) {
+        case 'red':
+          canvas.freeDrawingBrush.color = '#ff3b66';
           break;
 
-        case "purple":
-          canvas.freeDrawingBrush.color = "#e83bff";
+        case 'purple':
+          canvas.freeDrawingBrush.color = '#e83bff';
           break;
 
-        case "yellow":
-          canvas.freeDrawingBrush.color = "#ffcc00";
+        case 'yellow':
+          canvas.freeDrawingBrush.color = '#ffcc00';
           break;
 
-        case "green":
-          canvas.freeDrawingBrush.color = "#1bcc00";
+        case 'green':
+          canvas.freeDrawingBrush.color = '#1bcc00';
           break;
 
-        case "lightblue":
-          canvas.freeDrawingBrush.color = "#37b0ff";
+        case 'lightblue':
+          canvas.freeDrawingBrush.color = '#37b0ff';
           break;
 
-        case "blue":
-          canvas.freeDrawingBrush.color = "#3756ff";
+        case 'blue':
+          canvas.freeDrawingBrush.color = '#3756ff';
           break;
 
-        case "black":
-          canvas.freeDrawingBrush.color = "#505050";
+        case 'black':
+          canvas.freeDrawingBrush.color = '#505050';
           break;
 
         default:
@@ -10941,35 +10957,35 @@ window.onload = function () {
     });
   }); // 保存ボタンの処理
 
-  var saveButton = document.getElementById("save");
-  saveButton.addEventListener("click", function () {
+  var saveButton = document.getElementById('save');
+  saveButton.addEventListener('click', function () {
     canvasJson = JSON.stringify(canvas);
     console.log(canvasJson);
-    mainContainer.style.display = "none";
-    imageContainer.style.display = "flex";
+    mainContainer.style.display = 'none';
+    imageContainer.style.display = 'flex';
   }); // 閉じるボタンの処理
 
-  var closeButton = document.getElementById("close");
-  closeButton.addEventListener("click", function () {
-    mainContainer.style.display = "none";
-    imageContainer.style.display = "flex";
+  var closeButton = document.getElementById('close');
+  closeButton.addEventListener('click', function () {
+    mainContainer.style.display = 'none';
+    imageContainer.style.display = 'flex';
   }); // 画像ボタンの処理
 
-  var mainContainer = document.getElementById("main");
-  var imageContainer = document.getElementById("image");
-  var imageButton = document.getElementById("image-button");
-  imageButton.addEventListener("click", function () {
+  var mainContainer = document.getElementById('main');
+  var imageContainer = document.getElementById('image');
+  var imageButton = document.getElementById('image-button');
+  imageButton.addEventListener('click', function () {
     canvas.clear();
     if (canvasJson) canvas.loadFromJSON(canvasJson);else {
-      fabric.Image.fromURL("./028_paper.jpg", function (img) {
+      fabric.Image.fromURL('./028_paper.jpg', function (img) {
         img.scaleToWidth(canvas.width);
         img.scaleToHeight(canvas.height);
         canvas.setBackgroundImage(img);
         canvas.requestRenderAll();
       });
     }
-    mainContainer.style.display = "flex";
-    imageContainer.style.display = "none";
+    mainContainer.style.display = 'flex';
+    imageContainer.style.display = 'none';
   });
 };
 
