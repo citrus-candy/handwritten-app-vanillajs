@@ -6,11 +6,15 @@ import './assets/img/028_paper.jpg';
 window.onload = function() {
   let canvasJson = null;
 
-  // 画面サイズからvhを100%にする
+  /*
+   * 画面サイズからvhを100%にする
+   */
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-  // Fabricjsの初期設定
+  /*
+   * Fabricjsの初期設定
+   */
   const canvas = new fabric.Canvas('canvas', {
     width: 391,
     height: 553,
@@ -20,7 +24,9 @@ window.onload = function() {
   canvas.freeDrawingBrush.width = 5;
   canvas.freeDrawingBrush.color = '#505050';
 
-  // 戻るボタンの処理
+  /*
+   * 戻るボタンの処理
+   */
   const backButton = document.getElementById('back');
   let canvasHistory = [];
   backButton.addEventListener('click', () => {
@@ -32,15 +38,14 @@ window.onload = function() {
     }
   });
 
+  const bottomButtonContainer = document.getElementById('bottom-bc');
+
+  /*
+   * 拡大・縮小ボタンの処理
+   */
   const zoomActiveButton = document.getElementById('zoom-active');
   const zoomDeactiveButton = document.getElementById('zoom-deactive');
   const zoomWrapper = document.getElementById('zoom-wrapper');
-  const colorActiveButton = document.getElementById('color-active');
-  const colorDeactiveButton = document.getElementById('color-deactive');
-  const colorWrapper = document.getElementById('color-wrapper');
-  const bottomButtonContainer = document.getElementById('bottom-bc');
-
-  // 拡大・縮小ボタンの処理
   zoomDeactiveButton.addEventListener('click', () => {
     zoomWrapper.style.display = 'flex';
     zoomDeactiveButton.style.display = 'none';
@@ -106,7 +111,12 @@ window.onload = function() {
     }
   });
 
-  // テキストボタンの処理
+  /*
+   * テキストボタンの処理
+   */
+  const colorActiveButton = document.getElementById('color-active');
+  const colorDeactiveButton = document.getElementById('color-deactive');
+  const colorWrapper = document.getElementById('color-wrapper');
   colorDeactiveButton.addEventListener('click', () => {
     colorWrapper.style.display = 'flex';
     colorDeactiveButton.style.display = 'none';
@@ -126,7 +136,9 @@ window.onload = function() {
       bottomButtonContainer.style.marginTop = '104px';
   });
 
-  // 色ボタンの処理
+  /*
+   * 色ボタンの処理
+   */
   const colorButtons = document.querySelectorAll('.color');
   colorButtons.forEach((colorButton) => {
     colorButton.addEventListener('click', () => {
@@ -158,7 +170,9 @@ window.onload = function() {
     });
   });
 
-  // 保存ボタンの処理
+  /*
+   * 保存ボタンの処理
+   */
   const saveButton = document.getElementById('save');
   saveButton.addEventListener('click', () => {
     canvasJson = JSON.stringify(canvas);
@@ -167,14 +181,18 @@ window.onload = function() {
     imageContainer.style.display = 'flex';
   });
 
-  // 閉じるボタンの処理
+  /*
+   * 閉じるボタンの処理
+   */
   const closeButton = document.getElementById('close');
   closeButton.addEventListener('click', () => {
     mainContainer.style.display = 'none';
     imageContainer.style.display = 'flex';
   });
 
-  // 画像ボタンの処理
+  /*
+   *  画像ボタンの処理
+   */
   const mainContainer = document.getElementById('main');
   const imageContainer = document.getElementById('image');
   const imageButton = document.getElementById('image-button');
