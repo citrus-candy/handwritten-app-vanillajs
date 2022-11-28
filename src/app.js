@@ -3,8 +3,41 @@ import './style.css';
 
 import './assets/img/028_paper.jpg';
 
+const redColor = '#ff3b66';
+const purpleColor = '#e83bff';
+const yellowColor = '#ffcc00';
+const greenColor = '#1bcc00';
+const lightblueColor = '#37b0ff';
+const blueColor = '#3756ff';
+const blackColor = '#505050';
+
+const canvasSize = {
+  width: 391,
+  height: 553,
+};
+const brushOption = {
+  width: 5,
+  color: blackColor,
+};
+
 window.onload = function() {
-  let canvasJson = null;
+  const mainContainer = document.getElementById('main');
+  const imageContainer = document.getElementById('image');
+  const imageButton = document.getElementById('image-button');
+  const backButton = document.getElementById('back');
+  const zoomActiveButton = document.getElementById('zoom-active');
+  const zoomDeactiveButton = document.getElementById('zoom-deactive');
+  const zoomWrapper = document.getElementById('zoom-wrapper');
+  const zoomExpansionButton = document.getElementById('zoom-expansion');
+  const zoomContractionButton = document.getElementById('zoom-contraction');
+  const zoomResetButton = document.getElementById('zoom-reset');
+  const colorActiveButton = document.getElementById('color-active');
+  const colorDeactiveButton = document.getElementById('color-deactive');
+  const colorWrapper = document.getElementById('color-wrapper');
+  const colorButtons = document.querySelectorAll('.color');
+  const bottomButtonContainer = document.getElementById('bottom-bc');
+  const saveButton = document.getElementById('save');
+  const closeButton = document.getElementById('close');
 
   /*
    * 画面サイズからvhを100%にする
@@ -16,18 +49,17 @@ window.onload = function() {
    * Fabricjsの初期設定
    */
   const canvas = new fabric.Canvas('canvas', {
-    width: 391,
-    height: 553,
+    width: canvasSize.width,
+    height: canvasSize.height,
     isDrawingMode: true,
     freeDrawingBrush: new fabric.PencilBrush(canvas),
   });
-  canvas.freeDrawingBrush.width = 5;
-  canvas.freeDrawingBrush.color = '#505050';
+  canvas.freeDrawingBrush.width = brushOption.width;
+  canvas.freeDrawingBrush.color = brushOption.color;
 
   /*
    * 戻るボタンの処理
    */
-  const backButton = document.getElementById('back');
   let canvasHistory = [];
   backButton.addEventListener('click', () => {
     if (canvas !== undefined && canvas._objects.length > 0) {
@@ -38,38 +70,28 @@ window.onload = function() {
     }
   });
 
-  const bottomButtonContainer = document.getElementById('bottom-bc');
-
   /*
    * 拡大・縮小ボタンの処理
    */
-  const zoomActiveButton = document.getElementById('zoom-active');
-  const zoomDeactiveButton = document.getElementById('zoom-deactive');
-  const zoomWrapper = document.getElementById('zoom-wrapper');
   zoomDeactiveButton.addEventListener('click', () => {
-    zoomWrapper.style.display = 'flex';
-    zoomDeactiveButton.style.display = 'none';
-    if (
-      colorDeactiveButton.style.display == 'flex' ||
-      colorDeactiveButton.style.display == ''
-    )
-      bottomButtonContainer.style.marginTop = '33px';
+    onChangeExtendButtonStyle(
+      true,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
     canvas.isDrawingMode = false;
   });
   zoomActiveButton.addEventListener('click', () => {
-    zoomWrapper.style.display = 'none';
-    zoomDeactiveButton.style.display = 'flex';
-    if (
-      colorDeactiveButton.style.display == 'flex' ||
-      colorDeactiveButton.style.display == ''
-    )
-      bottomButtonContainer.style.marginTop = '104px';
+    onChangeExtendButtonStyle(
+      false,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
     canvas.isDrawingMode = true;
   });
 
-  const zoomExpansionButton = document.getElementById('zoom-expansion');
-  const zoomContractionButton = document.getElementById('zoom-contraction');
-  const zoomResetButton = document.getElementById('zoom-reset');
   zoomExpansionButton.addEventListener('click', () => {
     let zoom = canvas.getZoom();
     if (zoom >= 1 && zoom < 5) {
@@ -89,9 +111,9 @@ window.onload = function() {
     }
   });
   zoomResetButton.addEventListener('click', () => {
-    canvas.setZoom(1);
-    canvas.absolutePan(new fabric.Point(0, 0));
+    resetZoom();
   });
+
   let lastPosX;
   let lastPosY;
   canvas.on('mouse:down', function(opt) {
@@ -114,57 +136,49 @@ window.onload = function() {
   /*
    * テキストボタンの処理
    */
-  const colorActiveButton = document.getElementById('color-active');
-  const colorDeactiveButton = document.getElementById('color-deactive');
-  const colorWrapper = document.getElementById('color-wrapper');
   colorDeactiveButton.addEventListener('click', () => {
-    colorWrapper.style.display = 'flex';
-    colorDeactiveButton.style.display = 'none';
-    if (
-      zoomDeactiveButton.style.display == 'flex' ||
-      zoomDeactiveButton.style.display == ''
-    )
-      bottomButtonContainer.style.marginTop = '33px';
+    onChangeExtendButtonStyle(
+      true,
+      colorWrapper,
+      colorDeactiveButton,
+      zoomDeactiveButton
+    );
   });
   colorActiveButton.addEventListener('click', () => {
-    colorWrapper.style.display = 'none';
-    colorDeactiveButton.style.display = 'flex';
-    if (
-      zoomDeactiveButton.style.display == 'flex' ||
-      zoomDeactiveButton.style.display == ''
-    )
-      bottomButtonContainer.style.marginTop = '104px';
+    onChangeExtendButtonStyle(
+      false,
+      colorWrapper,
+      colorDeactiveButton,
+      zoomDeactiveButton
+    );
   });
 
   /*
    * 色ボタンの処理
    */
-  const colorButtons = document.querySelectorAll('.color');
   colorButtons.forEach((colorButton) => {
     colorButton.addEventListener('click', () => {
       switch (colorButton.getAttribute('id')) {
         case 'red':
-          canvas.freeDrawingBrush.color = '#ff3b66';
+          onChangeBrushColor(redColor);
           break;
         case 'purple':
-          canvas.freeDrawingBrush.color = '#e83bff';
+          onChangeBrushColor(purpleColor);
           break;
         case 'yellow':
-          canvas.freeDrawingBrush.color = '#ffcc00';
+          onChangeBrushColor(yellowColor);
           break;
         case 'green':
-          canvas.freeDrawingBrush.color = '#1bcc00';
+          onChangeBrushColor(greenColor);
           break;
         case 'lightblue':
-          canvas.freeDrawingBrush.color = '#37b0ff';
+          onChangeBrushColor(lightblueColor);
           break;
         case 'blue':
-          canvas.freeDrawingBrush.color = '#3756ff';
+          onChangeBrushColor(blueColor);
           break;
         case 'black':
-          canvas.freeDrawingBrush.color = '#505050';
-          break;
-        default:
+          onChangeBrushColor(blackColor);
           break;
       }
     });
@@ -173,41 +187,80 @@ window.onload = function() {
   /*
    * 保存ボタンの処理
    */
-  const saveButton = document.getElementById('save');
+  let canvasJson = null;
   saveButton.addEventListener('click', () => {
     canvasJson = JSON.stringify(canvas);
     console.log(canvasJson);
-    mainContainer.style.display = 'none';
-    imageContainer.style.display = 'flex';
+    onChangeOverlayStyle(false);
   });
 
   /*
    * 閉じるボタンの処理
    */
-  const closeButton = document.getElementById('close');
   closeButton.addEventListener('click', () => {
-    mainContainer.style.display = 'none';
-    imageContainer.style.display = 'flex';
+    onChangeOverlayStyle(false);
   });
 
   /*
    *  画像ボタンの処理
    */
-  const mainContainer = document.getElementById('main');
-  const imageContainer = document.getElementById('image');
-  const imageButton = document.getElementById('image-button');
   imageButton.addEventListener('click', () => {
     canvas.clear();
+    resetZoom();
     if (canvasJson) canvas.loadFromJSON(canvasJson);
-    else {
+    else
       fabric.Image.fromURL('./028_paper.jpg', (img) => {
         img.scaleToWidth(canvas.width);
         img.scaleToHeight(canvas.height);
         canvas.setBackgroundImage(img);
         canvas.requestRenderAll();
       });
-    }
-    mainContainer.style.display = 'flex';
-    imageContainer.style.display = 'none';
+    onChangeOverlayStyle(true);
   });
+
+  /**
+   * canvasの左上を基準にズームをリセット
+   */
+  function resetZoom() {
+    canvas.setZoom(1);
+    canvas.absolutePan(new fabric.Point(0, 0));
+  }
+
+  /**
+   * ペンの色を変更
+   * @param {string} color
+   */
+  function onChangeBrushColor(color) {
+    canvas.freeDrawingBrush.color = color;
+  }
+
+  /**
+   * 拡張ボタンクリック時のCSSの調整
+   * @param {boolean} flag
+   * @param {HTMLElement} wrapper
+   * @param {HTMLElement} button
+   * @param {HTMLElement} styleTargetButton
+   */
+  function onChangeExtendButtonStyle(flag, wrapper, button, styleTargetButton) {
+    const targetDisplay = styleTargetButton.style.display;
+
+    wrapper.style.display = flag ? 'flex' : 'none';
+    button.style.display = flag ? 'none' : 'flex';
+    if (targetDisplay == 'flex' || targetDisplay == '')
+      bottomButtonContainer.style.marginTop = flag ? '33px' : '104px';
+  }
+
+  /**
+   * オーバーレイのCSSの調整
+   * @param {boolean} flag
+   */
+  function onChangeOverlayStyle(flag) {
+    if (flag) {
+      mainContainer.style.display = 'flex';
+      imageContainer.style.display = 'none';
+    } else {
+      mainContainer.style.display = 'none';
+      imageContainer.style.display = 'flex';
+    }
+  }
 };
