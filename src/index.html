@@ -30,10 +30,18 @@
       </div>
       <div class="canvas-button-container">
         <div class="button" id="back">戻る</div>
-        <div class="button" id="zoom">拡大・縮小</div>
-        <div class="button" id="deactive">テキスト</div>
-        <div class="color-button-wrapper" id="active-wrapper">
-          <span class="button" id="active">テキスト</span>
+        <div class="button deactive" id="zoom-deactive">拡大・縮小</div>
+        <div class="zoom-button-wrapper" id="zoom-wrapper">
+          <span class="button active" id="zoom-active">拡大・縮小</span>
+          <div class="zoom-button-container">
+            <div class="button zoom" id="zoom-contraction">-</div>
+            <div class="button zoom" id="zoom-reset">リセット</div>
+            <div class="button zoom" id="zoom-expansion">+</div>
+          </div>
+        </div>
+        <div class="button deactive" id="color-deactive">テキスト</div>
+        <div class="color-button-wrapper" id="color-wrapper">
+          <span class="button active" id="color-active">テキスト</span>
           <div class="color-container">
             <div class="color" id="red"></div>
             <div class="color" id="purple"></div>

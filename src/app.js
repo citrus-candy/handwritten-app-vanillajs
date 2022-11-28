@@ -33,42 +33,79 @@ window.onload = function() {
   });
 
   // 拡大・縮小ボタンの処理
-  const zoomButton = document.getElementById('zoom');
-  let zoomFlag = false;
-  zoomButton.addEventListener('click', () => {
+  const zoomActiveButton = document.getElementById('zoom-active');
+  const zoomDeactiveButton = document.getElementById('zoom-deactive');
+  const zoomWrapper = document.getElementById('zoom-wrapper');
+  const bottomButtonContainer = document.getElementById('bottom-bc');
+  zoomDeactiveButton.addEventListener('click', () => {
+    zoomWrapper.style.display = 'flex';
+    zoomDeactiveButton.style.display = 'none';
+    bottomButtonContainer.style.marginTop = '33px';
+    canvas.isDrawingMode = false;
+  });
+  zoomActiveButton.addEventListener('click', () => {
+    zoomWrapper.style.display = 'none';
+    zoomDeactiveButton.style.display = 'flex';
+    bottomButtonContainer.style.marginTop = '104px';
+    canvas.isDrawingMode = true;
+  });
+
+  const zoomExpansionButton = document.getElementById('zoom-expansion');
+  const zoomContractionButton = document.getElementById('zoom-contraction');
+  const zoomResetButton = document.getElementById('zoom-reset');
+  zoomExpansionButton.addEventListener('click', () => {
     let zoom = canvas.getZoom();
-    canvas.zoomToPoint(
-      new fabric.Point(canvas.width / 2, canvas.height / 2),
-      zoom == 1 ? 1.5 : 1
-    );
-    if (zoomFlag) {
-      zoomButton.style.backgroundColor = 'white';
-      zoomFlag = false;
-    } else {
-      zoomButton.style.backgroundColor = '#eaf8f9';
-      zoomFlag = true;
+    if (zoom >= 1 && zoom < 5) {
+      canvas.zoomToPoint(
+        new fabric.Point(canvas.width / 2, canvas.height / 2),
+        zoom + 0.5
+      );
     }
   });
-  canvas.on('touch:gesture', function(event) {
-    // isGestureEvent = true;
-    var lPinchScale = event.self.scale;
-    var scaleDiff = (lPinchScale - 1) / 10 + 1; // Slow down zoom speed
-    canvas.setZoom(canvas.viewport.zoom * scaleDiff);
+  zoomContractionButton.addEventListener('click', () => {
+    let zoom = canvas.getZoom();
+    if (zoom > 1) {
+      canvas.zoomToPoint(
+        new fabric.Point(canvas.width / 2, canvas.height / 2),
+        zoom - 0.5
+      );
+    }
+  });
+  zoomResetButton.addEventListener('click', () => {
+    canvas.setZoom(1);
+    canvas.absolutePan(new fabric.Point(0, 0));
+  });
+  let lastPosX;
+  let lastPosY;
+  canvas.on('mouse:down', function(opt) {
+    if (!canvas.isDrawingMode) {
+      lastPosX = opt.pointer.x;
+      lastPosY = opt.pointer.y;
+    }
+  });
+  canvas.on('mouse:move', function(opt) {
+    if (!canvas.isDrawingMode) {
+      var vpt = canvas.viewportTransform;
+      vpt[4] += opt.pointer.x - lastPosX;
+      vpt[5] += opt.pointer.y - lastPosY;
+      canvas.requestRenderAll();
+      lastPosX = opt.pointer.x;
+      lastPosY = opt.pointer.y;
+    }
   });
 
   // テキストボタンの処理
-  const activeButton = document.getElementById('active');
-  const activeWrapper = document.getElementById('active-wrapper');
-  const deactiveButton = document.getElementById('deactive');
-  const bottomButtonContainer = document.getElementById('bottom-bc');
-  deactiveButton.addEventListener('click', () => {
-    activeWrapper.style.display = 'flex';
-    deactiveButton.style.display = 'none';
+  const colorActiveButton = document.getElementById('color-active');
+  const colorDeactiveButton = document.getElementById('color-deactive');
+  const colorWrapper = document.getElementById('color-wrapper');
+  colorDeactiveButton.addEventListener('click', () => {
+    colorWrapper.style.display = 'flex';
+    colorDeactiveButton.style.display = 'none';
     bottomButtonContainer.style.marginTop = '33px';
   });
-  activeButton.addEventListener('click', () => {
-    activeWrapper.style.display = 'none';
-    deactiveButton.style.display = 'flex';
+  colorActiveButton.addEventListener('click', () => {
+    colorWrapper.style.display = 'none';
+    colorDeactiveButton.style.display = 'flex';
     bottomButtonContainer.style.marginTop = '104px';
   });
 
