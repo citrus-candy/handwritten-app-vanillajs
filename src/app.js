@@ -32,21 +32,33 @@ window.onload = function() {
     }
   });
 
-  // 拡大・縮小ボタンの処理
   const zoomActiveButton = document.getElementById('zoom-active');
   const zoomDeactiveButton = document.getElementById('zoom-deactive');
   const zoomWrapper = document.getElementById('zoom-wrapper');
+  const colorActiveButton = document.getElementById('color-active');
+  const colorDeactiveButton = document.getElementById('color-deactive');
+  const colorWrapper = document.getElementById('color-wrapper');
   const bottomButtonContainer = document.getElementById('bottom-bc');
+
+  // 拡大・縮小ボタンの処理
   zoomDeactiveButton.addEventListener('click', () => {
     zoomWrapper.style.display = 'flex';
     zoomDeactiveButton.style.display = 'none';
-    bottomButtonContainer.style.marginTop = '33px';
+    if (
+      colorDeactiveButton.style.display == 'flex' ||
+      colorDeactiveButton.style.display == ''
+    )
+      bottomButtonContainer.style.marginTop = '33px';
     canvas.isDrawingMode = false;
   });
   zoomActiveButton.addEventListener('click', () => {
     zoomWrapper.style.display = 'none';
     zoomDeactiveButton.style.display = 'flex';
-    bottomButtonContainer.style.marginTop = '104px';
+    if (
+      colorDeactiveButton.style.display == 'flex' ||
+      colorDeactiveButton.style.display == ''
+    )
+      bottomButtonContainer.style.marginTop = '104px';
     canvas.isDrawingMode = true;
   });
 
@@ -95,18 +107,23 @@ window.onload = function() {
   });
 
   // テキストボタンの処理
-  const colorActiveButton = document.getElementById('color-active');
-  const colorDeactiveButton = document.getElementById('color-deactive');
-  const colorWrapper = document.getElementById('color-wrapper');
   colorDeactiveButton.addEventListener('click', () => {
     colorWrapper.style.display = 'flex';
     colorDeactiveButton.style.display = 'none';
-    bottomButtonContainer.style.marginTop = '33px';
+    if (
+      zoomDeactiveButton.style.display == 'flex' ||
+      zoomDeactiveButton.style.display == ''
+    )
+      bottomButtonContainer.style.marginTop = '33px';
   });
   colorActiveButton.addEventListener('click', () => {
     colorWrapper.style.display = 'none';
     colorDeactiveButton.style.display = 'flex';
-    bottomButtonContainer.style.marginTop = '104px';
+    if (
+      zoomDeactiveButton.style.display == 'flex' ||
+      zoomDeactiveButton.style.display == ''
+    )
+      bottomButtonContainer.style.marginTop = '104px';
   });
 
   // 色ボタンの処理
