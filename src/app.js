@@ -209,10 +209,12 @@ window.onload = function() {
    */
   let canvasJson = null;
   saveButton.addEventListener('click', () => {
+    resetZoom();
+    imageButton.src = canvas.toDataURL('image/png');
+    canvas.setBackgroundImage();
     canvasJson = JSON.stringify(canvas);
     console.log(canvasJson);
     onChangeOverlayStyle(false);
-    imageButton.src = canvas.toDataURL('image/png');
   });
 
   /*
@@ -230,13 +232,11 @@ window.onload = function() {
     canvas.clear();
     resetZoom();
     if (canvasJson) canvas.loadFromJSON(canvasJson);
-    else
-      fabric.Image.fromURL('./028_paper.jpg', (img) => {
-        img.scaleToWidth(canvas.width);
-        img.scaleToHeight(canvas.height);
-        canvas.setBackgroundImage(img);
-        canvas.requestRenderAll();
-      });
+    fabric.Image.fromURL('./028_paper.jpg', (img) => {
+      img.scaleToWidth(canvas.width);
+      img.scaleToHeight(canvas.height);
+      canvas.setBackgroundImage(img, () => canvas.renderAll());
+    });
     onChangeOverlayStyle(true);
   });
 
