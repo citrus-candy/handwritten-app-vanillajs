@@ -11030,6 +11030,9 @@ window.onload = function () {
 
   var canvasJson = null;
   saveButton.addEventListener('click', function () {
+    resetZoom();
+    imageButton.src = canvas.toDataURL('image/png');
+    canvas.setBackgroundImage();
     canvasJson = JSON.stringify(canvas);
     console.log(canvasJson);
     onChangeOverlayStyle(false);
@@ -11046,19 +11049,32 @@ window.onload = function () {
    */
 
   imageButton.addEventListener('click', function () {
+    initCanvasButton();
     canvas.clear();
     resetZoom();
-    if (canvasJson) canvas.loadFromJSON(canvasJson);else fabric.Image.fromURL('./028_paper.jpg', function (img) {
+    if (canvasJson) canvas.loadFromJSON(canvasJson);
+    fabric.Image.fromURL('./028_paper.jpg', function (img) {
       img.scaleToWidth(canvas.width);
       img.scaleToHeight(canvas.height);
-      canvas.setBackgroundImage(img);
-      canvas.requestRenderAll();
+      canvas.setBackgroundImage(img, function () {
+        return canvas.renderAll();
+      });
     });
     onChangeOverlayStyle(true);
   });
   /**
+   * キャンバスのボタンの初期化
+   */
+
+  function initCanvasButton() {
+    onChangeExtendButtonStyle(false, colorWrapper, colorDeactiveButton, zoomDeactiveButton);
+    onChangeExtendButtonStyle(false, zoomWrapper, zoomDeactiveButton, colorDeactiveButton);
+    canvas.isDrawingMode = true;
+  }
+  /**
    * canvasの左上を基準にズームをリセット
    */
+
 
   function resetZoom() {
     canvas.setZoom(1);
