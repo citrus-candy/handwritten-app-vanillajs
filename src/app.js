@@ -225,6 +225,7 @@ window.onload = function() {
    *  画像ボタンの処理
    */
   imageButton.addEventListener('click', () => {
+    initCanvasButton();
     canvas.clear();
     resetZoom();
     if (canvasJson) canvas.loadFromJSON(canvasJson);
@@ -237,6 +238,25 @@ window.onload = function() {
       });
     onChangeOverlayStyle(true);
   });
+
+  /**
+   * キャンバスのボタンの初期化
+   */
+  function initCanvasButton() {
+    onChangeExtendButtonStyle(
+      false,
+      colorWrapper,
+      colorDeactiveButton,
+      zoomDeactiveButton
+    );
+    onChangeExtendButtonStyle(
+      false,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
+    canvas.isDrawingMode = true;
+  }
 
   /**
    * canvasの左上を基準にズームをリセット
