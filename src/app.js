@@ -212,6 +212,7 @@ window.onload = function() {
     canvasJson = JSON.stringify(canvas);
     console.log(canvasJson);
     onChangeOverlayStyle(false);
+    imageButton.src = canvas.toDataURL('image/png');
   });
 
   /*
