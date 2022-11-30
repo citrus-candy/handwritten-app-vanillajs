@@ -88,6 +88,12 @@ window.onload = function() {
       colorDeactiveButton
     );
     canvas.isDrawingMode = false;
+
+    // オブジェクトの選択を無効化
+    const allObjects = canvas.getObjects();
+    allObjects.forEach((object) => {
+      object.selectable = false;
+    });
   });
   zoomActiveButton.addEventListener('click', () => {
     onChangeExtendButtonStyle(
