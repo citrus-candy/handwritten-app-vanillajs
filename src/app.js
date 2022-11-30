@@ -68,6 +68,13 @@ window.onload = function() {
       canvasHistory = copyArray;
       canvas.renderAll();
     }
+    onChangeExtendButtonStyle(
+      false,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
+    canvas.isDrawingMode = true;
   });
 
   /*
@@ -143,6 +150,13 @@ window.onload = function() {
       colorDeactiveButton,
       zoomDeactiveButton
     );
+    onChangeExtendButtonStyle(
+      false,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
+    canvas.isDrawingMode = true;
   });
   colorActiveButton.addEventListener('click', () => {
     onChangeExtendButtonStyle(
@@ -232,6 +246,13 @@ window.onload = function() {
    */
   function onChangeBrushColor(color) {
     canvas.freeDrawingBrush.color = color;
+    onChangeExtendButtonStyle(
+      false,
+      zoomWrapper,
+      zoomDeactiveButton,
+      colorDeactiveButton
+    );
+    canvas.isDrawingMode = true;
   }
 
   /**
